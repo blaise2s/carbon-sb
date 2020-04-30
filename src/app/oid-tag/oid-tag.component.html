@@ -1,0 +1,8 @@
+<ng-template #OIDHoverTemplate>
+  <span>{{ oid }}</span>
+</ng-template>
+<ibm-tag type="blue">
+  <span [ibmTooltip]="OIDHoverTemplate" trigger="hover" placement="bottom">
+    OID
+  </span>
+</ibm-tag>

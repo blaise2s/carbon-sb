@@ -1,1 +1,46 @@
-<button ibmButton (click)="onClick()">Click Me!</button>
+<div id="container">
+  <ibm-table-container>
+    <!-- <ibm-table-header>
+      <h4 ibmTableHeaderTitle>Title</h4>
+      <p ibmTableHeaderDescription>Description</p>
+    </ibm-table-header> -->
+    <ibm-table-toolbar [model]="model">
+      <ibm-table-toolbar-actions>
+        <button ibmButton>Set monitoring plan</button>
+        <button ibmButton>Archive</button>
+      </ibm-table-toolbar-actions>
+      <ibm-table-toolbar-content>
+        <button ibmButton="ghost">Collapse all</button>
+        <div id="toolbar-separator"></div>
+        <ibm-table-toolbar-search
+          [expandable]="true"
+        ></ibm-table-toolbar-search>
+        <button ibmButton="ghost">
+          <svg ibmIconSettings size="20"></svg>
+        </button>
+        <button ibmButton>Create new study event</button>
+      </ibm-table-toolbar-content>
+    </ibm-table-toolbar>
+    <ibm-table
+      [model]="model"
+      (sort)="sort($event)"
+      [striped]="striped"
+    ></ibm-table>
+  </ibm-table-container>
+</div>
+
+<ng-template #studyEventNameTableItemTemplate let-data="data">
+  <a ibmLink href="#">{{ data }}</a>
+</ng-template>
+
+<ng-template #lastModifiedTableItemTemplate let-data="data">
+  {{ data | date: 'medium' }}
+</ng-template>
+
+<ng-template #OIDTableItemTemplate let-data="data">
+  <app-oid-tag [oid]="data"></app-oid-tag>
+</ng-template>
+
+<ng-template #expansionTemplate let-data="data">
+  <h3>{{ data.firstName }} {{ data.lastName }}</h3>
+</ng-template>
