@@ -1,0 +1,95 @@
+<ibm-modal (overlaySelected)="closeModal()">
+  <ibm-modal-header (closeSelect)="closeModal()">
+    <h4>Create new study event</h4>
+  </ibm-modal-header>
+  <div id="content">
+    <form [formGroup]="studyEventFormGroup" (ngSubmit)="onSave()">
+      <div class="form-group">
+        <ibm-label [invalid]="invalid('title')" invalidText="Title is required">
+          Study event title
+          <input
+            ibmText
+            formControlName="title"
+            [invalid]="
+              !studyEventFormGroup.get('title').valid &&
+              studyEventFormGroup.get('title').touched
+            "
+          />
+        </ibm-label>
+      </div>
+      <div class="form-group flex">
+        <ibm-label
+          class="half pad-right"
+          [invalid]="invalid('shortName')"
+          invalidText="Short name is required"
+        >
+          Study event short name
+          <input
+            ibmText
+            formControlName="shortName"
+            [invalid]="
+              !studyEventFormGroup.get('shortName').valid &&
+              studyEventFormGroup.get('shortName').touched
+            "
+          />
+        </ibm-label>
+        <ibm-dropdown
+          class="half pad-left"
+          label="Study event type"
+          placeholder="Select a study event type"
+          formControlName="eventType"
+          [invalid]="invalid('eventType')"
+          invalidText="Event type is required"
+        >
+          <ibm-dropdown-list [items]="eventTypes"></ibm-dropdown-list>
+        </ibm-dropdown>
+      </div>
+      <div class="form-group flex">
+        <ibm-dropdown
+          class="half pad-right"
+          label="Study event order"
+          formControlName="eventOrder"
+          [invalid]="invalid('eventOrder')"
+          invalidText="Event order is required"
+        >
+          <ibm-dropdown-list [items]="eventOrders"></ibm-dropdown-list>
+        </ibm-dropdown>
+        <ibm-dropdown
+          class="half pad-left"
+          label="Add by"
+          placeholder="Select how to add the event"
+          formControlName="addBy"
+          [invalid]="invalid('addBy')"
+          invalidText="Add by is required"
+        >
+          <ibm-dropdown-list [items]="addBys"></ibm-dropdown-list>
+        </ibm-dropdown>
+      </div>
+      <div class="form-group thin">
+        <ibm-toggle
+          [size]="'sm'"
+          [onText]="'This study event is required'"
+          [offText]="'This study event is optional'"
+          formControlName="required"
+        ></ibm-toggle>
+      </div>
+      <div class="form-group checkbox">
+        <ibm-checkbox formControlName="createAnother"
+          ><span class="checkbox-text"
+            >Create another study event</span
+          ></ibm-checkbox
+        >
+      </div>
+    </form>
+  </div>
+  <ibm-modal-footer>
+    <button ibmButton="secondary" (click)="closeModal()">Cancel</button>
+    <button
+      ibmButton
+      (click)="onSave()"
+      [disabled]="!studyEventFormGroup.valid"
+    >
+      Create study event
+    </button>
+  </ibm-modal-footer>
+</ibm-modal>

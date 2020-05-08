@@ -1,0 +1,35 @@
+#content {
+  padding: 2rem 1rem;
+}
+
+.form-group {
+  &.thin {
+    margin-bottom: 1rem;
+  }
+  margin-bottom: 2rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.half {
+  width: 50%;
+}
+
+.pad-right {
+  padding-right: 1rem;
+}
+
+.pad-left {
+  padding-left: 1rem;
+}
+
+.checkbox {
+  margin-left: 50%;
+  padding-left: 1rem;
+
+  &-text {
+    padding-left: 0.5rem;
+  }
+}

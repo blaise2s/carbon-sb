@@ -1,9 +1,5 @@
 <div id="container">
   <ibm-table-container>
-    <!-- <ibm-table-header>
-      <h4 ibmTableHeaderTitle>Title</h4>
-      <p ibmTableHeaderDescription>Description</p>
-    </ibm-table-header> -->
     <ibm-table-toolbar [model]="model">
       <ibm-table-toolbar-actions>
         <button ibmButton>Set monitoring plan</button>
@@ -18,7 +14,9 @@
         <button ibmButton="ghost">
           <svg ibmIconSettings size="20"></svg>
         </button>
-        <button ibmButton>Create new study event</button>
+        <button ibmButton (click)="onCreateNewStudyEvent()">
+          Create new study event
+        </button>
       </ibm-table-toolbar-content>
     </ibm-table-toolbar>
     <ibm-table
@@ -39,6 +37,10 @@
 
 <ng-template #OIDTableItemTemplate let-data="data">
   <app-oid-tag [oid]="data"></app-oid-tag>
+</ng-template>
+
+<ng-template #ActionsTableItemTemplate>
+  <app-table-actions></app-table-actions>
 </ng-template>
 
 <ng-template #expansionTemplate let-data="data">
